@@ -3,13 +3,23 @@ window.onload = function() {
   var targetUrl = 'https://script.google.com/macros/s/AKfycbxCmBlQYwzA1NTwnskRdxTHtZ3Efmz72ssvsyON-1uPPeCmh3UF-OnSyVfkK-NOtGMkRw/exec';
 
   fetch(proxyUrl + targetUrl)
-    .then(response => response.text()) // Canvia a .text() per obtenir la resposta com a text pla.
-    .then(text => {
-      console.log(text); // Imprimeix el text a la consola per a depuració.
-      // Ara pots veure què estàs rebent realment i decidir com procedir.
+    .then(response => {
+      // Comprova primer si la resposta és correcta
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      } else {
+        // Només intenta analitzar com a JSON si la resposta és correcta
+        return response.json();
+      }
+    })
+    .then(data => {
+      // Fes el que calgui amb les dades JSON aquí
+      console.log(data);
     })
     .catch(error => {
-      console.error('Error:', error);
+      // Maneja qualsevol error que es produeixi en el procés de petició o anàlisi
+      console.error('Error en la petició o en l’anàlisi de JSON:', error);
     });
 };
+
 
