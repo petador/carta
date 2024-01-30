@@ -3,7 +3,7 @@ window.onload = function() {
   var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
   
   // Aquesta és la URL del teu Apps Script
-  var targetUrl = "https://script.google.com/a/macros/baruzotech.com/s/AKfycbzNVIYbJpVLFmyDRbGd7oUnKzgwzIYiJ3enu6UDozjyPOBmMeRzd8yH7vCE_ry-qryXYw/exec";
+  var targetUrl = "https://script.google.com/macros/s/AKfycbxCmBlQYwzA1NTwnskRdxTHtZ3Efmz72ssvsyON-1uPPeCmh3UF-OnSyVfkK-NOtGMkRw/exec";
   
   fetch(proxyUrl + targetUrl)
     .then(response => response.json())
